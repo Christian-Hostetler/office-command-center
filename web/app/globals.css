@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #000000;
+  --surface: #121212;
+  --surface-2: #1e1e1e;
+  --line: #262626;
+  --text: #ffffff;
+  --muted: #8e8e8e;
+  --faint: #3d3d3d;
+  --snap: cubic-bezier(0.2, 0.9, 0.1, 1);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --font-sans: var(--font-archivo), system-ui, sans-serif;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+  overscroll-behavior: none;
+  touch-action: manipulation;
+}
+
+input {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* Archivo's wide cut, the way equipment panels label their controls. */
+.wide {
+  font-stretch: 125%;
+}
+
+.semiwide {
+  font-stretch: 112%;
+}
+
+.press {
+  transition: transform 160ms var(--snap), background-color 260ms var(--snap), color 260ms var(--snap),
+    opacity 200ms ease;
+}
+
+.press:active {
+  transform: scale(0.97);
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes sink {
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.96);
+  }
+}
+
+@keyframes sweep {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(250%);
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.sheet-in {
+  animation: rise 420ms var(--snap) both;
+}
+
+.sheet-out {
+  animation: sink 260ms cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+.backdrop-in {
+  animation: fade-in 300ms ease both;
+}
+
+.backdrop-out {
+  animation: fade-out 260ms ease both;
+}
+
+.toast-in {
+  animation: toast-in 360ms var(--snap) both;
+}
+
+.sweep {
+  animation: sweep 1100ms cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+.appear {
+  animation: appear 500ms var(--snap) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet-in,
+  .sheet-out,
+  .backdrop-in,
+  .backdrop-out,
+  .toast-in,
+  .appear {
+    animation-duration: 1ms;
+  }
+}

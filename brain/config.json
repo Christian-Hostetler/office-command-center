@@ -1,0 +1,56 @@
+{
+  "name": "Office",
+  "listen": { "host": "0.0.0.0", "port": 80 },
+  "allowed_origins": [
+    "http://localhost:3000"
+  ],
+  "allowed_logins": [],
+  "fade_ms": 2000,
+  "poll_s": 3,
+  "schedule": [
+    { "at": "08:00", "mode": "deep-work" },
+    { "at": "17:00", "mode": "shutdown" }
+  ],
+  "devices": [
+    { "id": "main", "name": "Main light", "kind": "keylight", "host": null },
+    { "id": "fill", "name": "Fill light", "kind": "keylight", "host": null },
+    { "id": "bookshelf", "name": "Backlights", "kind": "plug", "host": null },
+    { "id": "camera", "name": "Camera", "kind": "plug", "host": null, "off_delay_s": 5 }
+  ],
+  "modes": [
+    {
+      "id": "deep-work",
+      "name": "Deep Work",
+      "note": "Lamps only",
+      "set": { "main": "off", "fill": "off", "bookshelf": "on", "camera": "off" }
+    },
+    {
+      "id": "meetings",
+      "name": "Meetings",
+      "note": "Soft light, webcam",
+      "set": {
+        "main": { "brightness": 60, "kelvin": 4000 },
+        "fill": { "brightness": 30, "kelvin": 4000 },
+        "bookshelf": "on",
+        "camera": "off"
+      }
+    },
+    {
+      "id": "filming",
+      "name": "Filming",
+      "note": "Warm side, camera on",
+      "set": {
+        "main": { "brightness": 45, "kelvin": 5200 },
+        "fill": { "brightness": 20, "kelvin": 2900 },
+        "bookshelf": "on",
+        "camera": "on"
+      }
+    },
+    {
+      "id": "shutdown",
+      "name": "Shutdown",
+      "note": "Everything off",
+      "set": { "main": "off", "fill": "off", "bookshelf": "off", "camera": "off" }
+    }
+  ]
+}
