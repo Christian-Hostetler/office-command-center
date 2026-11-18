@@ -2,6 +2,8 @@
 
 One tap on your phone sets up your whole office: the Key Lights, the lamps and the camera. I built it with Claude Code for my own office, and you can set it up for yours.
 
+Watch how I built it: https://youtu.be/P-ZXPMYZAss
+
 Want to see it first? The demo at https://office-command.vercel.app runs pretend devices right in your browser.
 
 ## How it works
